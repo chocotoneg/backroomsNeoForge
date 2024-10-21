@@ -31,11 +31,11 @@ public class ModBlocks {
                     .sound(SoundType.WOOD)
             ));
 
-    public static final DeferredBlock<Block> TILE = registerBlock("tile",
+    public static final DeferredBlock<Block> TILE = registerBlock("tile_blank",
             () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE)));
 
     public static final DeferredBlock<Block> TILE_LIGHT = registerBlock("tile_light",
-            () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GLASS).emissiveRendering((blockState, blockGetter, blockPos) -> true)));
+            () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GLASS).emissiveRendering((blockState, blockGetter, blockPos) -> true).lightLevel(blockState -> 15)));
 
     public static final DeferredBlock<Block> TILE_VENT = registerBlock("tile_vent",
             () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE)));

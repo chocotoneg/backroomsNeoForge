@@ -2,6 +2,11 @@ package net.mc3699.backrooms;
 
 import net.mc3699.backrooms.blocks.ModBlocks;
 import net.mc3699.backrooms.items.ModItems;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.dimension.DimensionType;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -19,6 +24,8 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+
+import java.awt.*;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(BackroomsMod.MODID)
@@ -43,6 +50,7 @@ public class BackroomsMod
         ModItems.register(modEventBus);
 
     }
+
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
