@@ -8,7 +8,9 @@
         { "block": "mcbr:moist_carpet", "height": 1 },
         { "block": "minecraft:air", "height": 5},
         { "block": "mcbr:tile_blank", "height":  1},
-        {"block": "minecraft:bedrock", "height": 4}
+        { "block": "minecraft:air", "height": 2},
+        { "block": "minecraft:oak_planks", "height": 1},
+        { "block": "minecraft:bedrock", "height": 4}
       ],
       "biome": "minecraft:void",
       "structures": {
