@@ -25,17 +25,20 @@ public class BackroomsGeneration {
     @SubscribeEvent
     public static void backroomsChunkGen(ChunkEvent.Load event)
     {
-        if(event.getLevel() instanceof ServerLevel level)
-        {
-            if(level.dimension() == BACKROOMS_DIM_KEY)
+            if(event.getLevel() instanceof ServerLevel level)
             {
-                level.getServer().submit(() ->
+                if(event.isNewChunk())
                 {
-                   ChunkPos chunkPos = event.getChunk().getPos();
-                   level.setBlock(chunkPos.getMiddleBlockPosition(-57), ModBlocks.TILE_LIGHT.get().defaultBlockState(), 2);
-                });
+                    if(level.dimension() == BACKROOMS_DIM_KEY)
+                    {
+                        level.getServer().submit(() ->
+                        {
+                            ChunkPos chunkPos = event.getChunk().getPos();
+                            level.setBlock(chunkPos.getMiddleBlockPosition(-57), ModBlocks.TILE_LIGHT.get().defaultBlockState(), 2);
+                        });
+                    }
+                }
             }
-        }
     }
 
     private static void generateLights(ServerLevel level, ChunkPos chunkPos)
