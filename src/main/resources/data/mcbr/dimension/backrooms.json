@@ -5,7 +5,10 @@
     "settings": {
       "layers": [
         { "block": "minecraft:bedrock", "height": 1 },
-        { "block": "mcbr:moist_carpet", "height": 1 }
+        { "block": "mcbr:moist_carpet", "height": 1 },
+        { "block": "minecraft:air", "height": 5},
+        { "block": "mcbr:tile_blank", "height":  1},
+        {"block": "minecraft:bedrock", "height": 4}
       ],
       "biome": "minecraft:void",
       "structures": {

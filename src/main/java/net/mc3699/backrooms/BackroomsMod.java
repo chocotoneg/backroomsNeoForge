@@ -1,7 +1,12 @@
 package net.mc3699.backrooms;
 
 import net.mc3699.backrooms.blocks.ModBlocks;
+import net.mc3699.backrooms.dimension.BackroomsGeneration;
+import net.mc3699.backrooms.entity.ModEntities;
+import net.mc3699.backrooms.entity.client.HowlerRenderer;
 import net.mc3699.backrooms.items.ModItems;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.dimension.DimensionType;
@@ -48,14 +53,25 @@ public class BackroomsMod
 
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
-
+        ModEntities.register(modEventBus);
+        NeoForge.EVENT_BUS.addListener(BackroomsGeneration::backroomsChunkGen);
     }
-
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
 
     }
+
+    @EventBusSubscriber(modid = BackroomsMod.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents
+    {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event)
+        {
+            EntityRenderers.register(ModEntities.HOWLER_ENTITY, HowlerRenderer::new);
+        }
+    }
+
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
