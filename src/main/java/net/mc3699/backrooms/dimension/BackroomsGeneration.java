@@ -10,10 +10,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.profiling.jfr.event.ChunkGenerationEvent;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.chunk.ChunkAccess;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.level.ChunkEvent;
 
+import java.util.concurrent.TimeUnit;
 
 
 @EventBusSubscriber
@@ -23,30 +26,26 @@ public class BackroomsGeneration {
             ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(BackroomsMod.MODID, "backrooms"));
 
     @SubscribeEvent
-    public static void backroomsChunkGen(ChunkEvent.Load event)
-    {
-            if(event.getLevel() instanceof ServerLevel level)
-            {
-                if(event.isNewChunk())
-                {
-                    if(level.dimension() == BACKROOMS_DIM_KEY)
-                    {
-                        level.getServer().submit(() ->
-                        {
-                            ChunkPos chunkPos = event.getChunk().getPos();
-                            level.setBlock(chunkPos.getMiddleBlockPosition(-57), ModBlocks.TILE_LIGHT.get().defaultBlockState(), 2);
-                        });
-                    }
+    public static void backroomsChunkGen(ChunkEvent.Load event) {
+        if (event.getLevel() instanceof ServerLevel level) {
+            if (event.isNewChunk()) {
+                if (level.dimension() == BACKROOMS_DIM_KEY) {
+                    ChunkPos chunkPos = event.getChunk().getPos();
+                    generateLights(event.getChunk());
                 }
             }
+        }
     }
 
-    private static void generateLights(ServerLevel level, ChunkPos chunkPos)
+    public static void generateLights(ChunkAccess chunk)
     {
-        for(int lightOffset = -4; lightOffset < 4; lightOffset = lightOffset + 2)
+        ChunkPos chunkPos = chunk.getPos();
+        for(int x = 0; x < 15; x = x + 4)
         {
-            level.setBlock(chunkPos.getMiddleBlockPosition(-57).offset(lightOffset,0,0), ModBlocks.TILE_LIGHT.get().defaultBlockState(), 2);
-            level.setBlock(chunkPos.getMiddleBlockPosition(-57).offset(lightOffset,0,0), ModBlocks.TILE_LIGHT.get().defaultBlockState(), 2);
+            for(int z = 0; z < 15; z = z + 4)
+            {
+                chunk.setBlockState(chunkPos.getWorldPosition().offset(x,-57,z), ModBlocks.TILE_LIGHT.get().defaultBlockState(), true);
+            }
         }
     }
 }
