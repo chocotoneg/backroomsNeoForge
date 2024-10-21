@@ -2,6 +2,7 @@ package net.mc3699.backrooms.dimension;
 
 import net.mc3699.backrooms.BackroomsMod;
 import net.mc3699.backrooms.blocks.ModBlocks;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -10,6 +11,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.profiling.jfr.event.ChunkGenerationEvent;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -32,6 +36,7 @@ public class BackroomsGeneration {
                 if (level.dimension() == BACKROOMS_DIM_KEY) {
                     ChunkPos chunkPos = event.getChunk().getPos();
                     generateLights(event.getChunk());
+                    generateBeams(event.getChunk());
                 }
             }
         }
@@ -45,6 +50,18 @@ public class BackroomsGeneration {
             for(int z = 0; z < 15; z = z + 4)
             {
                 chunk.setBlockState(chunkPos.getWorldPosition().offset(x,-57,z), ModBlocks.TILE_LIGHT.get().defaultBlockState(), true);
+                chunk.setBlockState(chunkPos.getWorldPosition().offset(x,-58,z), Blocks.LIGHT.defaultBlockState().setValue(BlockStateProperties.LEVEL, 15), true);
+            }
+        }
+    }
+
+    public static void generateBeams(ChunkAccess chunk)
+    {
+        for(int x = 0; x < 16; x = x + 2)
+        {
+            for(int z = 0; z < 16; z++)
+            {
+                chunk.setBlockState(chunk.getPos().getWorldPosition().offset(x,-55, z), Blocks.STRIPPED_OAK_LOG.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Z), true);
             }
         }
     }
