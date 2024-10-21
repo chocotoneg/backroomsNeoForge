@@ -12,7 +12,7 @@
         { "block": "minecraft:oak_planks", "height": 1},
         { "block": "minecraft:bedrock", "height": 4}
       ],
-      "biome": "minecraft:void",
+      "biome": "mcbr:backrooms_level_one",
       "structures": {
         "structures": {}
       }

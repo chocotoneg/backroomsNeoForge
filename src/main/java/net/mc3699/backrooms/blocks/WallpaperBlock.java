@@ -15,24 +15,12 @@ public class WallpaperBlock extends Block {
 
     public WallpaperBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(stateDefinition.any().setValue(IS_BOTTOM, true));
+        this.registerDefaultState(stateDefinition.any().setValue(IS_BOTTOM, false));
     }
 
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(IS_BOTTOM);
-    }
-
-    @Override
-    protected void onPlace(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull BlockState oldState, boolean movedByPiston) {
-        if(!level.isClientSide())
-        {
-            if(level.getBlockState(pos.below()).hasProperty(IS_BOTTOM))
-            {
-                level.setBlock(pos, state.setValue(IS_BOTTOM, false), 3);
-            }
-        }
-        super.onPlace(state, level, pos, oldState, movedByPiston);
     }
 }
