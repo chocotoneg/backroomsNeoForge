@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:overworld",
+  "type": "mcbr:backrooms_type",
   "generator": {
     "type": "minecraft:flat",
     "settings": {
