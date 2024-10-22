@@ -72,7 +72,7 @@ public class HowlerEntity extends Monster {
             {
                 mob.getLookControl().setLookAt(targetPlayer, 10f,10f);
                 PathNavigation navigation = mob.getNavigation();
-                navigation.moveTo(targetPlayer, 0.5f);
+                navigation.moveTo(targetPlayer, 0.8f);
             } else {
                 mob.getNavigation().stop();
             }

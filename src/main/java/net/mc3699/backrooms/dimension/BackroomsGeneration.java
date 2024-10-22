@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.profiling.jfr.event.ChunkGenerationEvent;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -56,7 +57,10 @@ public class BackroomsGeneration {
             for(int z = 0; z < 15; z = z + 4)
             {
                 chunk.setBlockState(chunkPos.getWorldPosition().offset(x,-57,z), ModBlocks.TILE_LIGHT.get().defaultBlockState(), true);
-                chunk.setBlockState(chunkPos.getWorldPosition().offset(x,-58,z), Blocks.LIGHT.defaultBlockState().setValue(BlockStateProperties.LEVEL, 15), false);
+                if(chunk.getBlockState(chunkPos.getWorldPosition().offset(x,-58,z)).is(Blocks.AIR))
+                {
+                    chunk.setBlockState(chunkPos.getWorldPosition().offset(x,-58,z), Blocks.LIGHT.defaultBlockState().setValue(BlockStateProperties.LEVEL, 15), false);
+                }
             }
         }
     }
