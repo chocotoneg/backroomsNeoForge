@@ -80,12 +80,11 @@ public class BackroomsGeneration {
     private final static int CEILING_LEVEL = -58;
 
 
-
     public static void generateWalls(ChunkAccess chunk)
     {
         int startX = random.nextInt(0, 15);
         int startZ = random.nextInt(0, 15);
-        int length = random.nextInt(4, 15);
+        int length = random.nextInt(5, 15);
 
         if(random.nextBoolean())
         {

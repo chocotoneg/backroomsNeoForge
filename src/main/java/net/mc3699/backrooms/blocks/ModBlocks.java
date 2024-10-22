@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import qouteall.imm_ptl.core.portal.Portal;
 
 import java.util.function.Supplier;
 
@@ -40,6 +41,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> TILE_VENT = registerBlock("tile_vent",
             () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE)));
 
+    public static final DeferredBlock<Block> PROTOTYPE = registerBlock("prototype",
+            () -> new PrototypeBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block)
     {
