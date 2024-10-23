@@ -1,5 +1,6 @@
 package net.mc3699.backrooms;
 
+import net.mc3699.backrooms.blocks.ModBlockEntities;
 import net.mc3699.backrooms.blocks.ModBlocks;
 import net.mc3699.backrooms.dimension.BackroomsGeneration;
 import net.mc3699.backrooms.entity.ModEntities;
@@ -54,6 +55,7 @@ public class BackroomsMod
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         NeoForge.EVENT_BUS.addListener(BackroomsGeneration::backroomsChunkGen);
     }
 
