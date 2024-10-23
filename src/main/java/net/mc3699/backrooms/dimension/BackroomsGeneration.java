@@ -3,26 +3,33 @@ package net.mc3699.backrooms.dimension;
 import net.mc3699.backrooms.BackroomsMod;
 import net.mc3699.backrooms.blocks.ModBlocks;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ChunkGenerationTask;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.util.profiling.jfr.event.ChunkGenerationEvent;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.levelgen.synth.PerlinNoise;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.level.ChunkEvent;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -33,20 +40,44 @@ public class BackroomsGeneration {
     public static final ResourceKey<Level> BACKROOMS_DIM_KEY =
             ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath(BackroomsMod.MODID, "backrooms"));
 
+    public static final ResourceLocation BACKROOMS_L1_BIOME_KEY =
+            ResourceLocation.fromNamespaceAndPath(BackroomsMod.MODID, "backrooms_level_one");
+
     public static final Random random = new Random();
+
+    private static final PerlinNoise UnlitRoomNoise = PerlinNoise.create(RandomSource.create(), List.of(1,5,9));
+    private static final PerlinNoise EmptyAreaNoise = PerlinNoise.create(RandomSource.create(), List.of(2,1,9));
+
+    private static boolean isChunkInNoise(int chunkX, int chunkZ, PerlinNoise noise, double threshold)
+    {
+        double scale = 0.1;
+        double noiseValue = noise.getValue(chunkX * scale, chunkZ * scale, 0.0);
+        return noiseValue > threshold;
+    }
 
     @SubscribeEvent
     public static void backroomsChunkGen(ChunkEvent.Load event) {
         if (event.getLevel() instanceof ServerLevel level) {
             if (event.isNewChunk()) {
                 if (level.dimension() == BACKROOMS_DIM_KEY) {
-                    ChunkPos chunkPos = event.getChunk().getPos();
-                    generateBeams(event.getChunk());
-                    generateLights(event.getChunk());
-                    generateWalls(event.getChunk());
+                    genFromNoise(event.getChunk());
                 }
             }
         }
+    }
+
+
+    public static void genFromNoise(ChunkAccess chunk)
+    {
+        BlockPos chunkLocation = chunk.getPos().getWorldPosition();
+        //Holder<Biome> biomeHolder = chunk.getLevel().getBiome(chunkLocation);
+        //Biome chunkBiome = biomeHolder.value();
+        //ResourceLocation BiomeID = chunk.getLevel().registryAccess().registryOrThrow(Registries.BIOME).getKey(chunkBiome);
+
+        generateBeams(chunk);
+        if(!isChunkInNoise(chunk.getPos().x,chunk.getPos().z, UnlitRoomNoise, 0.2)) {generateLights(chunk);}
+        if(!isChunkInNoise(chunk.getPos().x,chunk.getPos().z, EmptyAreaNoise, 0.25)) {generateWalls(chunk);}
+
     }
 
     public static void generateLights(ChunkAccess chunk)
