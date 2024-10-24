@@ -1,0 +1,9 @@
+{
+  "variants":
+  {
+    "facing=north": {"model": "mcbr:block/threshold_origin"},
+    "facing=south": {"model": "mcbr:block/threshold_origin", "y": 180},
+    "facing=east": {"model": "mcbr:block/threshold_origin", "y":  90},
+    "facing=west": {"model": "mcbr:block/threshold_origin", "y": 270}
+  }
+}

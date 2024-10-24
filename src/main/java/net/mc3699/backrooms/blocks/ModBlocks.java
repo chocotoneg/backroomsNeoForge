@@ -46,6 +46,12 @@ public class ModBlocks {
     public static final DeferredBlock<Block> THRESHOLD_TRANSMITTER = registerBlock("threshold_transmitter",
             () -> new ThresholdTransmitterBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
 
+    public static final DeferredBlock<Block> THRESHOLD_ORIGIN = registerBlock("threshold_origin",
+            () -> new ThresholdOriginBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
+
+    public static final DeferredBlock<Block> NULLZONE = registerBlock("null_zone",
+            () -> new NullZoneBlock(BlockBehaviour.Properties.of().noCollission()));
+
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block)
     {
         DeferredBlock<T> returnBlock = BLOCKS.register(name, block);

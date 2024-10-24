@@ -1,46 +1,60 @@
 package net.mc3699.backrooms.blocks;
 
-import net.mc3699.backrooms.blocks.entity.PrototypeBlockEntity;
+import net.mc3699.backrooms.blocks.entity.NullzoneBlockEntity;
 import net.mc3699.backrooms.dimension.BackroomsGeneration;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 import qouteall.imm_ptl.core.api.PortalAPI;
 import qouteall.imm_ptl.core.portal.Portal;
 import qouteall.imm_ptl.core.portal.PortalManipulation;
-import qouteall.imm_ptl.core.portal.PortalUtils;
 
-public class ThresholdTransmitterBlock extends Block {
-    public ThresholdTransmitterBlock(Properties properties) {
+public class NullZoneBlock extends Block implements EntityBlock {
+    public NullZoneBlock(Properties properties) {
         super(properties);
     }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return Shapes.empty();
+    }
+
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return Shapes.empty();
+    }
+
 
     private void createPortal(Level level, BlockPos pos, ResourceKey<Level> targetDimension, Vec3 targetPosition)
     {
         if(level != null)
         {
+            // Create new portal entity
             Portal portal = Portal.ENTITY_TYPE.create(level.getServer().getLevel(level.dimension()));
             assert portal != null;
-            portal.setOriginPos(new Vec3(pos.getX()+0.5, pos.getY()+1.01, pos.getZ()+0.5));
+            portal.setOriginPos(new Vec3(pos.getX()+0.5, pos.getY()+0.5, pos.getZ()+0.5));
             portal.setDestination(targetPosition);
             portal.setDestinationDimension(targetDimension);
             portal.setOrientationAndSize(
                     new Vec3(0,0,1),
                     new Vec3(1,0,0),
-                    1.5,
-                    1.5
+                    1,
+                    1
             );
-            PortalManipulation.makePortalRound(portal, 30);
             portal.level().addFreshEntity(portal);
         }
     }
@@ -57,15 +71,22 @@ public class ThresholdTransmitterBlock extends Block {
 
     @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        BlockPos copyPos = pos.north();
+        BlockState adjacentState = level.getBlockState(copyPos);
+
         if(!level.isClientSide())
         {
-            if(level.dimension() == BackroomsGeneration.BACKROOMS_DIM_KEY)
+            createPortal(level, pos, BackroomsGeneration.BACKROOMS_DIM_KEY, new Vec3(pos.getX(), -57, pos.getZ()));
+
+            if(level.getBlockEntity(pos) instanceof NullzoneBlockEntity nullEnt)
             {
-                createPortal(level, pos, Level.OVERWORLD, new Vec3(pos.getX(), 300, pos.getZ()));
-            } else {
-                createPortal(level, pos, BackroomsGeneration.BACKROOMS_DIM_KEY, new Vec3(pos.getX(), -57, pos.getY()));
+                nullEnt.setFakeState(adjacentState);
             }
+
         }
+
+
+
     }
 
     @Override
@@ -74,5 +95,10 @@ public class ThresholdTransmitterBlock extends Block {
         {
             deletePortal(level,pos);
         }
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new NullzoneBlockEntity(blockPos, blockState);
     }
 }

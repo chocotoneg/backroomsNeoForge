@@ -1,6 +1,7 @@
 package net.mc3699.backrooms.blocks;
 
 import net.mc3699.backrooms.BackroomsMod;
+import net.mc3699.backrooms.blocks.entity.NullzoneBlockEntity;
 import net.mc3699.backrooms.blocks.entity.PrototypeBlockEntity;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
@@ -19,6 +20,12 @@ public class ModBlockEntities {
             () -> BlockEntityType.Builder.of(
                     PrototypeBlockEntity::new,
                     ModBlocks.PROTOTYPE.get()
+            ).build(null));
+
+    public static final Supplier<BlockEntityType<NullzoneBlockEntity>> NULLZONE_BLOCK_ENTITY = BLOCK_ENTITIES.register("nullzone_block_entity",
+            () -> BlockEntityType.Builder.of(
+                    NullzoneBlockEntity::new,
+                    ModBlocks.NULLZONE.get()
             ).build(null));
 
     public static void register(IEventBus eventBus)

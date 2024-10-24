@@ -47,6 +47,7 @@ public class BackroomsGeneration {
 
     private static final PerlinNoise UnlitRoomNoise = PerlinNoise.create(RandomSource.create(), List.of(1,5,9));
     private static final PerlinNoise EmptyAreaNoise = PerlinNoise.create(RandomSource.create(), List.of(2,1,9));
+    private static final PerlinNoise PlusRoomNoise = PerlinNoise.create(RandomSource.create(), List.of(3,2,1));
 
     private static boolean isChunkInNoise(int chunkX, int chunkZ, PerlinNoise noise, double threshold)
     {
@@ -74,9 +75,25 @@ public class BackroomsGeneration {
         //Biome chunkBiome = biomeHolder.value();
         //ResourceLocation BiomeID = chunk.getLevel().registryAccess().registryOrThrow(Registries.BIOME).getKey(chunkBiome);
 
+
+        if(isChunkInNoise(chunk.getPos().x, chunk.getPos().z, PlusRoomNoise, 0.1))
+        {
+            generateCrossShape(chunk);
+            generateLights(chunk);
+            return;
+        }
+
         generateBeams(chunk);
-        if(!isChunkInNoise(chunk.getPos().x,chunk.getPos().z, UnlitRoomNoise, 0.2)) {generateLights(chunk);}
-        if(!isChunkInNoise(chunk.getPos().x,chunk.getPos().z, EmptyAreaNoise, 0.25)) {generateWalls(chunk);}
+        if(!isChunkInNoise(chunk.getPos().x,chunk.getPos().z, UnlitRoomNoise, 0.2)) {
+            generateLights(chunk);
+        }
+
+        if(!isChunkInNoise(chunk.getPos().x,chunk.getPos().z, EmptyAreaNoise, 0.25)) {
+            generateWalls(chunk);
+        }
+
+
+
 
     }
 
@@ -119,17 +136,17 @@ public class BackroomsGeneration {
 
         if(random.nextBoolean())
         {
-            fillWall(chunk, startX, startZ, startX+length, startZ+1, ModBlocks.YELLOW_WALLPAPER.get().defaultBlockState());
+            fillWall(chunk, startX, startZ, startX+length, startZ+1, 0, ModBlocks.YELLOW_WALLPAPER.get().defaultBlockState());
         } else {
-            fillWall(chunk, startX, startZ, startX+1, startZ+length, ModBlocks.YELLOW_WALLPAPER.get().defaultBlockState());
+            fillWall(chunk, startX, startZ, startX+1, startZ+length, 0, ModBlocks.YELLOW_WALLPAPER.get().defaultBlockState());
         }
 
     }
 
-    public static void fillWall(ChunkAccess chunk, int startX, int startZ, int endX, int endZ, BlockState block)
+    public static void fillWall(ChunkAccess chunk, int startX, int startZ, int endX, int endZ, int heightOffset, BlockState block)
     {
 
-        for(int height = FLOOR_LEVEL; height < CEILING_LEVEL+1; height++)
+        for(int height = FLOOR_LEVEL; height < (CEILING_LEVEL-heightOffset)+1; height++)
         {
             for(int ix = startX; ix < endX; ix++)
             {
@@ -141,7 +158,11 @@ public class BackroomsGeneration {
             }
 
         }
+    }
 
-
+    public static void generateCrossShape(ChunkAccess chunk)
+    {
+        fillWall(chunk, 6, 3, 9, 12, 0, ModBlocks.YELLOW_WALLPAPER.get().defaultBlockState());
+        fillWall(chunk, 3, 6, 12,9, 0, ModBlocks.YELLOW_WALLPAPER.get().defaultBlockState());
     }
 }

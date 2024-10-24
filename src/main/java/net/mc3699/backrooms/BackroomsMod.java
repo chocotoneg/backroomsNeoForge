@@ -2,10 +2,13 @@ package net.mc3699.backrooms;
 
 import net.mc3699.backrooms.blocks.ModBlockEntities;
 import net.mc3699.backrooms.blocks.ModBlocks;
+import net.mc3699.backrooms.blocks.entity.NullzoneBlockEntity;
 import net.mc3699.backrooms.dimension.BackroomsGeneration;
 import net.mc3699.backrooms.entity.ModEntities;
 import net.mc3699.backrooms.entity.client.HowlerRenderer;
+import net.mc3699.backrooms.entity.client.blockRenderer.NullzoneBlockEntityRenderer;
 import net.mc3699.backrooms.items.ModItems;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -71,6 +74,7 @@ public class BackroomsMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.HOWLER_ENTITY, HowlerRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.NULLZONE_BLOCK_ENTITY.get(), NullzoneBlockEntityRenderer::new);
         }
     }
 
