@@ -1,0 +1,10 @@
+{
+  "auditory_guidepost_ping": {
+    "subtitle": "sounds.mcbr.auditory_guidepost_ping",
+    "sounds": [
+      "mcbr:auditory_guidepost_ping"
+    ]
+  }
+
+
+}

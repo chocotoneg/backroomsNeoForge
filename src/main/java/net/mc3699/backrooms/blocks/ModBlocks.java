@@ -1,6 +1,7 @@
 package net.mc3699.backrooms.blocks;
 
 import net.mc3699.backrooms.BackroomsMod;
+import net.mc3699.backrooms.blocks.entity.AuditoryGuidepostBlock;
 import net.mc3699.backrooms.blocks.entity.PrototypeBlockEntity;
 import net.mc3699.backrooms.items.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -51,6 +52,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> NULLZONE = registerBlock("null_zone",
             () -> new NullZoneBlock(BlockBehaviour.Properties.of().noCollission()));
+
+    public static final DeferredBlock<AuditoryGuidepostBlock> AUDITORY_GUIDEPOST = registerBlock("auditory_guidepost",
+            () -> new AuditoryGuidepostBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL).noCollission()));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block)
     {

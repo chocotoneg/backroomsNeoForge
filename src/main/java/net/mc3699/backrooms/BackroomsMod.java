@@ -8,6 +8,7 @@ import net.mc3699.backrooms.entity.ModEntities;
 import net.mc3699.backrooms.entity.client.HowlerRenderer;
 import net.mc3699.backrooms.entity.client.blockRenderer.NullzoneBlockEntityRenderer;
 import net.mc3699.backrooms.items.ModItems;
+import net.mc3699.backrooms.sound.ModSounds;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.Registry;
@@ -59,6 +60,7 @@ public class BackroomsMod
         ModItems.register(modEventBus);
         ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModSounds.register(modEventBus);
         NeoForge.EVENT_BUS.addListener(BackroomsGeneration::backroomsChunkGen);
     }
 

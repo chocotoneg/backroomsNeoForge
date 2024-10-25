@@ -101,4 +101,5 @@ public class NullZoneBlock extends Block implements EntityBlock {
     public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
         return new NullzoneBlockEntity(blockPos, blockState);
     }
+
 }
