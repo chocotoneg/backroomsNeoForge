@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "mcbr:block/tile_light"
+    "all": "mcbr:block/lvl1_ceiling_light"
   }
 }

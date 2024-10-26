@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "mcbr:block/moist_carpet"
+    "all": "mcbr:block/lvl1_carpet"
   }
 }

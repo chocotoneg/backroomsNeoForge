@@ -1,6 +1,6 @@
 {
   "variants": {
-    "is_bottom=false": { "model": "mcbr:block/yellow_wallpaper" },
+    "is_bottom=false": { "model": "mcbr:block/lvl1_wallpaper" },
     "is_bottom=true": { "model": "mcbr:block/yellow_wallpaper_bottom" }
   }
 }
