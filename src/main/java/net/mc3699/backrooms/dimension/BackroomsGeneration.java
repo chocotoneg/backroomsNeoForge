@@ -70,11 +70,8 @@ public class BackroomsGeneration {
 
     public static void genFromNoise(ChunkAccess chunk)
     {
-        BlockPos chunkLocation = chunk.getPos().getWorldPosition();
-        //Holder<Biome> biomeHolder = chunk.getLevel().getBiome(chunkLocation);
-        //Biome chunkBiome = biomeHolder.value();
-        //ResourceLocation BiomeID = chunk.getLevel().registryAccess().registryOrThrow(Registries.BIOME).getKey(chunkBiome);
-
+        // DO NOT REMOVE!
+        generateBeams(chunk);
 
         if(isChunkInNoise(chunk.getPos().x, chunk.getPos().z, PlusRoomNoise, 0.1))
         {
@@ -83,7 +80,7 @@ public class BackroomsGeneration {
             return;
         }
 
-        generateBeams(chunk);
+
         if(!isChunkInNoise(chunk.getPos().x,chunk.getPos().z, UnlitRoomNoise, 0.2)) {
             generateLights(chunk);
         }
@@ -123,6 +120,8 @@ public class BackroomsGeneration {
             }
         }
     }
+
+
 
     private final static int FLOOR_LEVEL = -62;
     private final static int CEILING_LEVEL = -58;
