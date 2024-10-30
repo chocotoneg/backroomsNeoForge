@@ -29,6 +29,8 @@ import qouteall.imm_ptl.core.portal.PortalManipulation;
 import qouteall.imm_ptl.core.portal.PortalUtils;
 import qouteall.imm_ptl.peripheral.portal_generation.PortalHelperForm;
 
+import java.util.Objects;
+
 public class ThresholdOriginBlock extends Block {
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -105,8 +107,7 @@ public class ThresholdOriginBlock extends Block {
     {
         if(level != null)
         {
-            // Overworld Portal
-            Portal portal = Portal.ENTITY_TYPE.create(level.getServer().getLevel(level.dimension()));
+            Portal portal = Portal.ENTITY_TYPE.create(Objects.requireNonNull(level.getServer().getLevel(level.dimension())));
             assert portal != null;
             portal.setOriginPos(new Vec3(pos.getX()+offset.x, pos.getY()+offset.y, pos.getZ()+offset.z));
             portal.setDestination(targetPosition);

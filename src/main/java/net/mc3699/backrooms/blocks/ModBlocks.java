@@ -20,22 +20,22 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(BackroomsMod.MODID);
 
 
-    public static final DeferredBlock<Block> MOIST_CARPET = registerBlock("moist_carpet", () -> new Block(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<Block> MOIST_CARPET = registerBlock("lvl1_carpet", () -> new Block(BlockBehaviour.Properties.of()
             .strength(0.5f)
             .sound(SoundType.WOOL)
             ));
 
 
-    public static final DeferredBlock<Block> YELLOW_WALLPAPER = registerBlock("yellow_wallpaper",
+    public static final DeferredBlock<Block> YELLOW_WALLPAPER = registerBlock("lvl1_wallpaper",
             () -> new WallpaperBlock(BlockBehaviour.Properties.of()
                     .strength(1.5f)
                     .sound(SoundType.WOOD)
             ));
 
-    public static final DeferredBlock<Block> TILE = registerBlock("tile_blank",
+    public static final DeferredBlock<Block> TILE = registerBlock("lvl1_ceiling_tile",
             () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE)));
 
-    public static final DeferredBlock<Block> TILE_LIGHT = registerBlock("tile_light",
+    public static final DeferredBlock<Block> TILE_LIGHT = registerBlock("lvl1_ceiling_light",
             () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GLASS).emissiveRendering((blockState, blockGetter, blockPos) -> false).lightLevel(blockState -> 0)));
 
     public static final DeferredBlock<Block> TILE_VENT = registerBlock("tile_vent",
@@ -52,6 +52,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> NULLZONE = registerBlock("null_zone",
             () -> new NullZoneBlock(BlockBehaviour.Properties.of().noCollission()));
+
+    public static final DeferredBlock<Block> LASER_TEST = registerBlock("laser",
+            () -> new LaserBlock(BlockBehaviour.Properties.of()));
 
     public static final DeferredBlock<AuditoryGuidepostBlock> AUDITORY_GUIDEPOST = registerBlock("auditory_guidepost",
             () -> new AuditoryGuidepostBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL).noCollission()));
