@@ -61,9 +61,9 @@ public class ThresholdTransmitterBlock extends Block {
         {
             if(level.dimension() == BackroomsGeneration.BACKROOMS_DIM_KEY)
             {
-                createPortal(level, pos, Level.OVERWORLD, new Vec3(pos.getX(), 300, pos.getZ()));
+                createPortal(level, pos, Level.OVERWORLD, new Vec3(pos.getX(), 322, pos.getZ()));
             } else {
-                createPortal(level, pos, BackroomsGeneration.BACKROOMS_DIM_KEY, new Vec3(pos.getX(), -57, pos.getY()));
+                createPortal(level, pos, BackroomsGeneration.BACKROOMS_DIM_KEY, new Vec3(pos.getX(), -57, pos.getZ()));
             }
         }
     }

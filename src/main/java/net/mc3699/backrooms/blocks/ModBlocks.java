@@ -1,8 +1,6 @@
 package net.mc3699.backrooms.blocks;
 
 import net.mc3699.backrooms.BackroomsMod;
-import net.mc3699.backrooms.blocks.entity.AuditoryGuidepostBlock;
-import net.mc3699.backrooms.blocks.entity.PrototypeBlockEntity;
 import net.mc3699.backrooms.items.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

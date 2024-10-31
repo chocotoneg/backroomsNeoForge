@@ -1,4 +1,4 @@
-package net.mc3699.backrooms.blocks.entity;
+package net.mc3699.backrooms.blocks;
 
 import net.mc3699.backrooms.sound.ModSounds;
 import net.minecraft.core.BlockPos;

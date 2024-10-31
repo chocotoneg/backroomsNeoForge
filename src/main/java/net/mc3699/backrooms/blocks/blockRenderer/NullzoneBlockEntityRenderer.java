@@ -1,4 +1,4 @@
-package net.mc3699.backrooms.entity.client.blockRenderer;
+package net.mc3699.backrooms.blocks.blockRenderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.mc3699.backrooms.blocks.entity.NullzoneBlockEntity;
@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-public class NullzoneBlockEntityRenderer  implements BlockEntityRenderer<NullzoneBlockEntity> {
+public class NullzoneBlockEntityRenderer implements BlockEntityRenderer<NullzoneBlockEntity> {
 
     public final BlockRenderDispatcher renderDispatcher;
 
