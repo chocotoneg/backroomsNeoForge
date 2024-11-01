@@ -3,6 +3,7 @@ package net.mc3699.backrooms.blocks.blockRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import net.mc3699.backrooms.BackroomsMod;
 import net.mc3699.backrooms.blocks.LaserBlock;
 import net.mc3699.backrooms.blocks.entity.LaserBlockEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -12,6 +13,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.checkerframework.checker.units.qual.A;
@@ -46,12 +48,14 @@ public class LaserBeamRenderer implements BlockEntityRenderer<LaserBlockEntity> 
                     case WEST  -> poseStack.mulPose(Axis.ZP.rotationDegrees(-90));
                 }
 
-                VertexConsumer builder = multiBufferSource.getBuffer(RenderType.lines());
-                drawLine(poseStack, builder, 0,0,0,0,4,0);
-                drawLine(poseStack, builder, 0.25f,0,0,0.25f,4,0);
-                drawLine(poseStack, builder, -0.25f,0,0,-0.25f,4,0);
-                drawLine(poseStack, builder, 0,0,0.25f,0,4,0.25f);
-                drawLine(poseStack, builder, 0,0,-0.25f,0,4,-0.25f);
+                VertexConsumer builder = multiBufferSource.getBuffer(RenderType.beaconBeam(ResourceLocation.fromNamespaceAndPath(BackroomsMod.MODID, "beam.png"), true));
+                //drawLine(poseStack, builder, 0,0,0,0,4,0);
+                //drawLine(poseStack, builder, 0.25f,0,0,0.25f,4,0);
+                //drawLine(poseStack, builder, -0.25f,0,0,-0.25f,4,0);
+                //drawLine(poseStack, builder, 0,0,0.25f,0,4,0.25f);
+                //drawLine(poseStack, builder, 0,0,-0.25f,0,4,-0.25f);
+                drawBeam(poseStack, builder, 10);
+
                 poseStack.popPose();
             }
     }
@@ -64,10 +68,35 @@ public class LaserBeamRenderer implements BlockEntityRenderer<LaserBlockEntity> 
     private static void drawLine(PoseStack poseStack, VertexConsumer vertexConsumer, float x1, float y1, float z1, float x2, float y2, float z2)
     {
         vertexConsumer.addVertex(poseStack.last().pose(), x1,y1,z1)
+                .setUv(0,0)
+                .setUv1(0,0)
+                .setUv2(0,0)
                 .setColor(255, 255, 0, 255)
                 .setNormal(poseStack.last(), 0,1,0);
         vertexConsumer.addVertex(poseStack.last().pose(), x2,y2,z2)
+                .setUv(0,0)
+                .setUv1(0,0)
+                .setUv2(0,0)
                 .setColor(255,255,0,255)
                 .setNormal(poseStack.last(), 0,1,0);
+    }
+
+    private static void drawBeam(PoseStack poseStack, VertexConsumer vertexConsumer, float beamLen)
+    {
+        vertexConsumer.addVertex(poseStack.last().pose(), -0.25f, -0.25f, 2f)
+                .setUv(0.8f,0.2f)
+                .setUv1(1,1)
+                .setUv2(1,1)
+                .setColor(255,255,0,100)
+                .setNormal(poseStack.last(), 0,1,0);
+
+        vertexConsumer.addVertex(poseStack.last().pose(), 0.25f, -0.25f, 2f)
+                .setUv(0.8f,0.5f)
+                .setUv1(1,1)
+                .setUv2(1,1)
+                .setColor(255,255,0,10)
+                .setNormal(poseStack.last(), 0,1,0);
+
+
     }
 }

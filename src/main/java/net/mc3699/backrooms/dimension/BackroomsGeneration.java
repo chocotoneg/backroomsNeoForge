@@ -2,23 +2,14 @@ package net.mc3699.backrooms.dimension;
 
 import net.mc3699.backrooms.BackroomsMod;
 import net.mc3699.backrooms.blocks.ModBlocks;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ChunkGenerationTask;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.util.profiling.jfr.event.ChunkGenerationEvent;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.AirBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -26,13 +17,10 @@ import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.levelgen.synth.PerlinNoise;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.level.ChunkEvent;
 
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 
 @EventBusSubscriber
 public class BackroomsGeneration {
@@ -123,8 +111,8 @@ public class BackroomsGeneration {
 
 
 
-    private final static int FLOOR_LEVEL = -62;
-    private final static int CEILING_LEVEL = -58;
+    private final static int L1_FLOOR_LEVEL = -62;
+    private final static int L1_CEILING_LEVEL = -58;
 
 
     public static void generateWalls(ChunkAccess chunk)
@@ -145,7 +133,7 @@ public class BackroomsGeneration {
     public static void fillWall(ChunkAccess chunk, int startX, int startZ, int endX, int endZ, int heightOffset, BlockState block)
     {
 
-        for(int height = FLOOR_LEVEL; height < (CEILING_LEVEL-heightOffset)+1; height++)
+        for(int height = L1_FLOOR_LEVEL; height < (L1_CEILING_LEVEL -heightOffset)+1; height++)
         {
             for(int ix = startX; ix < endX; ix++)
             {
@@ -165,3 +153,4 @@ public class BackroomsGeneration {
         fillWall(chunk, 3, 6, 12,9, 0, ModBlocks.YELLOW_WALLPAPER.get().defaultBlockState());
     }
 }
+
