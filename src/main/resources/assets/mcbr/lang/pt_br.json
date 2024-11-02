@@ -1,8 +1,8 @@
 {
   "block.mcbr.moist_carpet": "Carpete Úmido"
   "block.mcbr.threshold_transmitter": "Transmissor do Limiar (Ferramenta de Depuração)",
-  "block.mcbr.tile_blank": "Placa de Forro",
-  "block.mcbr.tile_light": "Luminária Fluorescente Quebrada",
+  "block.mcbr.tile_blank": "Ladrilho de Teto",
+  "block.mcbr.tile_light": "Lâmpada Fluorescente Quebrada",
   "block.mcbr.yellow_wallpaper": "Papel de Parede Amarelo",
   "block.mcbr.prototype": "Protótipo",
   "block.mcbr.null_zone": "Zona Nula (Ferramenta de Depuração)",
