@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "north": "mcbr:block/beam_initiator_front",
+    "south": "mcbr:block/beam_initiator_back",
+    "east": "mcbr:block/beam_initiator_left",
+    "west": "mcbr:block/beam_initiator_right",
+    "up": "mcbr:block/beam_initiator_top",
+    "down": "mcbr:block/beam_initiator_bottom"
+  }
+}

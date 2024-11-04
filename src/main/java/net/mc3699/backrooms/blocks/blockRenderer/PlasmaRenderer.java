@@ -35,7 +35,7 @@ public class PlasmaRenderer implements BlockEntityRenderer<LaserBlockEntity> {
                 float randFloatX = randomSource.nextFloat();
                 float randFloatZ = randomSource.nextFloat();
 
-                poseStack.translate(0.5+randFloatX*0.1,0.5,0.5+randFloatZ*0.1);
+                poseStack.translate(0,2,0.5);
 
                 poseStack.mulPose(Axis.XP.rotationDegrees(-90));
 
@@ -66,10 +66,10 @@ public class PlasmaRenderer implements BlockEntityRenderer<LaserBlockEntity> {
 
     private static void drawPlasma(PoseStack poseStack, VertexConsumer vertexConsumer, int i, int i1, float beamLen)
     {
-        addVert(vertexConsumer, poseStack, 0, 0.55f, 1, 0f,0f);
-        addVert(vertexConsumer, poseStack, 0, 0.55f, -1, 1f,0f);
-        addVert(vertexConsumer, poseStack, -1, 0.55f, -1, 1f,1f);
-        addVert(vertexConsumer, poseStack, -1, 0.55f, 1f, 0f,1f);
+        addVert(vertexConsumer, poseStack, 0, 0.55f, 2, 0f,0f);
+        addVert(vertexConsumer, poseStack, 0, 0.55f, -2, 1f,0f);
+        addVert(vertexConsumer, poseStack, -2, 0.55f, -2, 1f,1f);
+        addVert(vertexConsumer, poseStack, -2, 0.55f, 2f, 0f,1f);
     }
 
 
@@ -79,7 +79,7 @@ public class PlasmaRenderer implements BlockEntityRenderer<LaserBlockEntity> {
                 .setUv(u,v)
                 .setUv1(0,0)
                 .setUv2(255,255)
-                .setColor(1f,1f,1f,0.7f)
+                .setColor(1f,1f,1f,0.999f)
                 .setNormal(poseStack.last(), 0,1,0);
     }
 }

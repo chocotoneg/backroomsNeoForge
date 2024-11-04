@@ -1,6 +1,7 @@
 package net.mc3699.backrooms.blocks;
 
 import net.mc3699.backrooms.BackroomsMod;
+import net.mc3699.backrooms.blocks.util.CustomDirectionalBlock;
 import net.mc3699.backrooms.items.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -48,14 +49,29 @@ public class ModBlocks {
     public static final DeferredBlock<Block> THRESHOLD_ORIGIN = registerBlock("threshold_origin",
             () -> new ThresholdOriginBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
 
-    public static final DeferredBlock<Block> NULLZONE = registerBlock("null_zone",
+    public static final DeferredBlock<Block> NULL_ZONE = registerBlock("null_zone",
             () -> new NullZoneBlock(BlockBehaviour.Properties.of().noCollission()));
 
     public static final DeferredBlock<Block> LASER_TEST = registerBlock("laser",
             () -> new LaserBlock(BlockBehaviour.Properties.of()));
 
+    public static final DeferredBlock<Block> RF_CAVITY = registerBlock("rf_cavity",
+            () -> new CustomDirectionalBlock(BlockBehaviour.Properties.of().sound(SoundType.COPPER_GRATE)));
+
+    public static final DeferredBlock<Block> BEAM_INITIATOR = registerBlock("beam_initiator",
+            () -> new CustomDirectionalBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
+
+    public static final DeferredBlock<Block> MAGNETIC_LENS = registerBlock("magnetic_lens",
+            () -> new CustomDirectionalBlock(BlockBehaviour.Properties.of().sound(SoundType.COPPER)));
+
+    public static final DeferredBlock<Block> THRESHOLD_BACKPLANE = registerBlock("threshold_backplane",
+            () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE)));
+
     public static final DeferredBlock<AuditoryGuidepostBlock> AUDITORY_GUIDEPOST = registerBlock("auditory_guidepost",
             () -> new AuditoryGuidepostBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL).noCollission()));
+
+
+
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block)
     {

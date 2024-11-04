@@ -1,0 +1,11 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "north": "mcbr:block/rf_cavity_front",
+    "south": "mcbr:block/rf_cavity_front",
+    "east": "mcbr:block/rf_cavity_side",
+    "west": "mcbr:block/rf_cavity_side",
+    "up": "mcbr:block/rf_cavity_side",
+    "down": "mcbr:block/rf_cavity_side"
+  }
+}

@@ -1,11 +1,19 @@
 {
-  "block.mcbr.moist_carpet": "Moist Carpet",
+  "creative_tab.mcbr.backrooms_items": "Backrooms",
+
+
+  "block.mcbr.lvl1_carpet": "Moist Carpet",
   "block.mcbr.threshold_transmitter": "Threshold Transmitter (DEBUG TOOL)",
-  "block.mcbr.tile_blank": "Ceiling Tile",
-  "block.mcbr.tile_light": "Broken Florescent Light",
-  "block.mcbr.yellow_wallpaper": "Yellow Wallpaper",
+  "block.mcbr.lvl1_ceiling_tile": "Ceiling Tile",
+  "block.mcbr.lvl1_ceiling_light": "Broken Florescent Light",
+  "block.mcbr.lvl1_wallpaper": "Yellow Wallpaper",
   "block.mcbr.prototype": "Prototype",
   "block.mcbr.null_zone": "Null Zone (DEBUG TOOL)",
   "block.mcbr.threshold_origin": "KV31 Primary Emitter",
-  "block.mcbr.auditory_guidepost": "Auditory Guidepost"
+  "block.mcbr.auditory_guidepost": "Auditory Guidepost",
+  "block.mcbr.rf_cavity": "RF Cavity",
+  "block.mcbr.threshold_backplane": "Threshold Backplane",
+  "block.mcbr.beam_initiator": "Beam Initiator",
+
+  "sounds.mcbr.auditory_guidepost_ping": "Auditory Guidepost Pings"
 }

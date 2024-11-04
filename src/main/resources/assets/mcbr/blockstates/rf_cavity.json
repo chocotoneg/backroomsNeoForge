@@ -1,0 +1,9 @@
+{
+  "variants":
+  {
+    "facing=north": {"model": "mcbr:block/rf_cavity"},
+    "facing=south": {"model": "mcbr:block/rf_cavity", "y": 180},
+    "facing=east": {"model": "mcbr:block/rf_cavity", "y":  90},
+    "facing=west": {"model": "mcbr:block/rf_cavity", "y": 270}
+  }
+}

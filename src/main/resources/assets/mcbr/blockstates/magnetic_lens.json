@@ -1,0 +1,9 @@
+{
+  "variants":
+  {
+    "facing=north": {"model": "mcbr:block/magnetic_lens"},
+    "facing=south": {"model": "mcbr:block/magnetic_lens", "y": 180},
+    "facing=east": {"model": "mcbr:block/magnetic_lens", "y":  90},
+    "facing=west": {"model": "mcbr:block/magnetic_lens", "y": 270}
+  }
+}

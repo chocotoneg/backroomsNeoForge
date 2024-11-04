@@ -4,11 +4,9 @@ import net.mc3699.backrooms.BackroomsMod;
 import net.mc3699.backrooms.blocks.entity.LaserBlockEntity;
 import net.mc3699.backrooms.blocks.entity.NullzoneBlockEntity;
 import net.mc3699.backrooms.blocks.entity.PrototypeBlockEntity;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -26,7 +24,7 @@ public class ModBlockEntities {
     public static final Supplier<BlockEntityType<NullzoneBlockEntity>> NULLZONE_BLOCK_ENTITY = BLOCK_ENTITIES.register("nullzone_block_entity",
             () -> BlockEntityType.Builder.of(
                     NullzoneBlockEntity::new,
-                    ModBlocks.NULLZONE.get()
+                    ModBlocks.NULL_ZONE.get()
             ).build(null));
 
     public static final Supplier<BlockEntityType<LaserBlockEntity>> LASER_BLOCK_ENTITY = BLOCK_ENTITIES.register("laser_block_entity",

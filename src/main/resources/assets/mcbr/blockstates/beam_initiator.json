@@ -1,0 +1,9 @@
+{
+  "variants":
+  {
+    "facing=north": {"model": "mcbr:block/beam_initiator"},
+    "facing=south": {"model": "mcbr:block/beam_initiator", "y": 180},
+    "facing=east": {"model": "mcbr:block/beam_initiator", "y":  90},
+    "facing=west": {"model": "mcbr:block/beam_initiator", "y": 270}
+  }
+}
