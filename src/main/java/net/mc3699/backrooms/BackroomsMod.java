@@ -1,9 +1,8 @@
 package net.mc3699.backrooms;
 
-import net.mc3699.backrooms.blocks.LaserBlock;
 import net.mc3699.backrooms.blocks.ModBlockEntities;
 import net.mc3699.backrooms.blocks.ModBlocks;
-import net.mc3699.backrooms.blocks.blockRenderer.LaserBeamRenderer;
+import net.mc3699.backrooms.blocks.blockRenderer.PlasmaRenderer;
 import net.mc3699.backrooms.dimension.BackroomsGeneration;
 import net.mc3699.backrooms.entity.ModEntities;
 import net.mc3699.backrooms.entity.client.HowlerRenderer;
@@ -67,7 +66,7 @@ public class BackroomsMod
         {
             EntityRenderers.register(ModEntities.HOWLER_ENTITY, HowlerRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.NULLZONE_BLOCK_ENTITY.get(), NullzoneBlockEntityRenderer::new);
-            BlockEntityRenderers.register(ModBlockEntities.LASER_BLOCK_ENTITY.get(), LaserBeamRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.LASER_BLOCK_ENTITY.get(), PlasmaRenderer::new);
         }
     }
 
