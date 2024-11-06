@@ -1,11 +1,19 @@
 {
-  "block.mcbr.moist_carpet": "Carpete Úmido"
+  "creative_tab.mcbr.backrooms_items": "Backrooms",
+
+
+  "block.mcbr.lvl1_carpet": "Carpete Úmido",
   "block.mcbr.threshold_transmitter": "Transmissor do Limiar (Ferramenta de Depuração)",
-  "block.mcbr.tile_blank": "Ladrilho de Teto",
-  "block.mcbr.tile_light": "Lâmpada Fluorescente Quebrada",
-  "block.mcbr.yellow_wallpaper": "Papel de Parede Amarelo",
+  "block.mcbr.lvl1_ceiling_tile": "Ladriljo de Teto",
+  "block.mcbr.lvl1_ceiling_light": "Lãmpada Fluorescente Quebrada",
+  "block.mcbr.lvl1_wallpaper": "Papel de Parede Amarelo",
   "block.mcbr.prototype": "Protótipo",
   "block.mcbr.null_zone": "Zona Nula (Ferramenta de Depuração)",
   "block.mcbr.threshold_origin": "KV31 Emissor Primário",
-  "block.mcbr.auditory_guidepost": "Guia Auditivo"
+  "block.mcbr.auditory_guidepost": "Guia Sonoro",
+  "block.mcbr.rf_cavity": "Cavidade RF",
+  "block.mcbr.threshold_backplane": "Placa de Fundo do Limiar",
+  "block.mcbr.beam_initiator": "Iniciador de Feixe",
+
+  "sounds.mcbr.auditory_guidepost_ping": "Sinais Sonoros do Guia"
 }
