@@ -28,11 +28,11 @@ public class ModBlocks {
     public static final DeferredBlock<Block> YELLOW_WALLPAPER = registerBlock("lvl1_wallpaper",
             () -> new WallpaperBlock(BlockBehaviour.Properties.of()
                     .strength(1.5f)
-                    .sound(SoundType.WOOD)
+                    .sound(SoundType.STONE)
             ));
 
     public static final DeferredBlock<Block> TILE = registerBlock("lvl1_ceiling_tile",
-            () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE)));
+            () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.WOOL)));
 
     public static final DeferredBlock<Block> TILE_LIGHT = registerBlock("lvl1_ceiling_light",
             () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GLASS).emissiveRendering((blockState, blockGetter, blockPos) -> false).lightLevel(blockState -> 0)));
