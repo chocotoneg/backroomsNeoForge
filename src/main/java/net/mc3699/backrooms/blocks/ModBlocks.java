@@ -59,7 +59,7 @@ public class ModBlocks {
             () -> new CustomDirectionalBlock(BlockBehaviour.Properties.of().sound(SoundType.COPPER_GRATE)));
 
     public static final DeferredBlock<Block> BEAM_INITIATOR = registerBlock("beam_initiator",
-            () -> new CustomDirectionalBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
+            () -> new BeamInitiatorBlock(BlockBehaviour.Properties.of().sound(SoundType.METAL)));
 
     public static final DeferredBlock<Block> MAGNETIC_LENS = registerBlock("magnetic_lens",
             () -> new CustomDirectionalBlock(BlockBehaviour.Properties.of().sound(SoundType.COPPER)));

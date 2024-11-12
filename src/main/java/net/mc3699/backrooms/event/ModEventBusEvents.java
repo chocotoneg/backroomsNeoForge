@@ -3,6 +3,7 @@ package net.mc3699.backrooms.event;
 import net.mc3699.backrooms.BackroomsMod;
 import net.mc3699.backrooms.entity.ModEntities;
 import net.mc3699.backrooms.entity.behavior.HowlerEntity;
+import net.mc3699.backrooms.entity.behavior.LifeformEntity;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -14,5 +15,6 @@ public class ModEventBusEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event)
     {
         event.put(ModEntities.HOWLER_ENTITY, HowlerEntity.createHowlerAttributes().build());
+        event.put(ModEntities.LIFEFORM_ENTITY, LifeformEntity.createAttributes().build());
     }
 }

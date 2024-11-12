@@ -1,10 +1,12 @@
 package net.mc3699.backrooms.blocks;
 
 import net.mc3699.backrooms.BackroomsMod;
+import net.mc3699.backrooms.blocks.entity.BeamInitiatorBlockEntity;
 import net.mc3699.backrooms.blocks.entity.LaserBlockEntity;
 import net.mc3699.backrooms.blocks.entity.NullzoneBlockEntity;
 import net.mc3699.backrooms.blocks.entity.PrototypeBlockEntity;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -31,6 +33,13 @@ public class ModBlockEntities {
             () -> BlockEntityType.Builder.of(
                     LaserBlockEntity::new,
                     ModBlocks.LASER_TEST.get()
+            ).build(null));
+
+
+    public static final Supplier<BlockEntityType<BeamInitiatorBlockEntity>> BEAM_INIT_ENTITY = BLOCK_ENTITIES.register("beam_init_entity",
+            () -> BlockEntityType.Builder.of(
+                    BeamInitiatorBlockEntity::new,
+                    ModBlocks.BEAM_INITIATOR.get()
             ).build(null));
 
     public static void register(IEventBus eventBus)

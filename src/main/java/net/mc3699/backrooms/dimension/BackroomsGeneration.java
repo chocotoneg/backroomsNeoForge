@@ -104,7 +104,8 @@ public class BackroomsGeneration {
         {
             for(int z = 0; z < 16; z++)
             {
-                chunk.setBlockState(chunk.getPos().getWorldPosition().offset(x,-55, z), Blocks.STRIPPED_OAK_LOG.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Z), true);
+                chunk.setBlockState(chunk.getPos().getWorldPosition().offset(x,-55, z),
+                    Blocks.STRIPPED_OAK_LOG.defaultBlockState().setValue(BlockStateProperties.AXIS, Direction.Axis.Z), true);
             }
         }
     }
@@ -140,7 +141,6 @@ public class BackroomsGeneration {
                 for(int iz = startZ; iz < endZ; iz++)
                 {
                     chunk.setBlockState(chunk.getPos().getWorldPosition().offset(ix,height,iz), block, true);
-                    //Minecraft.getInstance().player.sendSystemMessage(Component.literal("Generating wall block"));
                 }
             }
 

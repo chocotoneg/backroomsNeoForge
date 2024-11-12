@@ -9,6 +9,4 @@ public class ThresholdTransmitterBlockEntity extends BlockEntity {
     public ThresholdTransmitterBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
-
-
 }
