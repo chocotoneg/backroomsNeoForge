@@ -1,0 +1,20 @@
+{
+  "creative_tab.mcbr.backrooms_items": "Backrooms",
+
+
+  "block.mcbr.lvl1_carpet": "Feuchter Teppich",
+  "block.mcbr.threshold_transmitter": "Schwellen Sender",
+  "block.mcbr.lvl1_ceiling_tile": "Deckenplatte",
+  "block.mcbr.lvl1_ceiling_light": "Defekte Leuchtstofflampe",
+  "block.mcbr.lvl1_wallpaper": "Gelbe Tapete",
+  "block.mcbr.prototype": "Prototyp",
+  "block.mcbr.null_zone": "Null-Zone (Debug-Tool)",
+  "block.mcbr.threshold_origin": "KV31 Primärer Emitter",
+  "block.mcbr.auditory_guidepost": "Auditiver Wegweiser",
+  "block.mcbr.rf_cavity": "HF-Hohlraum",
+  "block.mcbr.threshold_backplane": "Schwellen Rückplatte",
+  "block.mcbr.beam_initiator": "Strahl-Initiator",
+  "block.mcbr.magnetic_lens": "Magnetische Linse",
+
+  "sounds.mcbr.auditory_guidepost_ping": "Auditiver Wegweiser"
+}
