@@ -2,6 +2,7 @@ package net.mc3699.backrooms.dimension;
 
 import net.mc3699.backrooms.BackroomsMod;
 import net.mc3699.backrooms.blocks.ModBlocks;
+import net.mc3699.utility.BlockFill;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -61,7 +62,7 @@ public class BackroomsGeneration {
         // DO NOT REMOVE!
         generateBeams(chunk);
 
-        if(isChunkInNoise(chunk.getPos().x, chunk.getPos().z, PlusRoomNoise, 0.1))
+        if(isChunkInNoise(chunk.getPos().x, chunk.getPos().z, PlusRoomNoise, 0.02))
         {
             generateCrossShape(chunk);
             generateLights(chunk);
@@ -89,10 +90,10 @@ public class BackroomsGeneration {
         {
             for(int z = 0; z < 15; z = z + 4)
             {
-                chunk.setBlockState(chunkPos.getWorldPosition().offset(x,-57,z), ModBlocks.TILE_LIGHT.get().defaultBlockState(), true);
-                if(chunk.getBlockState(chunkPos.getWorldPosition().offset(x,-58,z)).is(Blocks.AIR))
+                chunk.setBlockState(chunkPos.getWorldPosition().offset(x,L1_CEILING_LEVEL,z), ModBlocks.TILE_LIGHT.get().defaultBlockState(), true);
+                if(chunk.getBlockState(chunkPos.getWorldPosition().offset(x,L1_CEILING_LEVEL-1,z)).is(Blocks.AIR))
                 {
-                    chunk.setBlockState(chunkPos.getWorldPosition().offset(x,-58,z), Blocks.LIGHT.defaultBlockState().setValue(BlockStateProperties.LEVEL, 15), false);
+                    chunk.setBlockState(chunkPos.getWorldPosition().offset(x,L1_CEILING_LEVEL-1,z), Blocks.LIGHT.defaultBlockState().setValue(BlockStateProperties.LEVEL, 15), false);
                 }
             }
         }
@@ -113,7 +114,7 @@ public class BackroomsGeneration {
 
 
     private final static int L1_FLOOR_LEVEL = -62;
-    private final static int L1_CEILING_LEVEL = -58;
+    private final static int L1_CEILING_LEVEL = -57;
 
 
     public static void generateWalls(ChunkAccess chunk)
@@ -121,12 +122,13 @@ public class BackroomsGeneration {
         int startX = random.nextInt(0, 15);
         int startZ = random.nextInt(0, 15);
         int length = random.nextInt(5, 15);
+        int wallThickness = random.nextInt(0,4);
 
         if(random.nextBoolean())
         {
-            fillWall(chunk, startX, startZ, startX+length, startZ+1, 0, ModBlocks.YELLOW_WALLPAPER.get().defaultBlockState());
+            BlockFill.fillArea(chunk, startX, L1_FLOOR_LEVEL, startZ, startX+length, L1_CEILING_LEVEL, startZ+wallThickness, ModBlocks.YELLOW_WALLPAPER.get());
         } else {
-            fillWall(chunk, startX, startZ, startX+1, startZ+length, 0, ModBlocks.YELLOW_WALLPAPER.get().defaultBlockState());
+            BlockFill.fillArea(chunk, startX, L1_FLOOR_LEVEL, startZ, startX+wallThickness, L1_CEILING_LEVEL, startZ+length, ModBlocks.YELLOW_WALLPAPER.get());
         }
 
     }
@@ -143,9 +145,9 @@ public class BackroomsGeneration {
                     chunk.setBlockState(chunk.getPos().getWorldPosition().offset(ix,height,iz), block, true);
                 }
             }
-
         }
     }
+
 
     public static void generateCrossShape(ChunkAccess chunk)
     {

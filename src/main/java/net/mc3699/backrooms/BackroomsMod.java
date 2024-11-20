@@ -71,7 +71,6 @@ public class BackroomsMod
             EntityRenderers.register(ModEntities.LIFEFORM_ENTITY, LifeformRenderer::new);
 
             BlockEntityRenderers.register(ModBlockEntities.NULLZONE_BLOCK_ENTITY.get(), NullzoneBlockEntityRenderer::new);
-            BlockEntityRenderers.register(ModBlockEntities.LASER_BLOCK_ENTITY.get(), PlasmaRenderer::new);
         }
     }
 

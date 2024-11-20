@@ -4,8 +4,7 @@
     "type": "minecraft:flat",
     "settings": {
       "layers": [
-        { "block": "minecraft:bedrock", "height": 1 },
-        { "block": "mcbr:lvl1_carpet", "height": 1 },
+        { "block": "mcbr:lvl1_carpet", "height": 2 },
         { "block": "minecraft:air", "height": 5},
         { "block": "mcbr:lvl1_ceiling_tile", "height": 1},
         { "block": "minecraft:air", "height": 2},
