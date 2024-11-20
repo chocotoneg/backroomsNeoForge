@@ -14,6 +14,7 @@
   "block.mcbr.rf_cavity": "RF Cavity",
   "block.mcbr.threshold_backplane": "Threshold Backplane",
   "block.mcbr.beam_initiator": "Beam Initiator",
+  "block.mcbr.magnetic_lens": "Magnetic lens",
 
   "sounds.mcbr.auditory_guidepost_ping": "Auditory Guidepost Pings"
 }

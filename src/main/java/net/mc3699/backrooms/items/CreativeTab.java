@@ -33,6 +33,7 @@ public class CreativeTab {
                         output.accept(ModBlocks.THRESHOLD_TRANSMITTER);
                         output.accept(ModBlocks.BEAM_INITIATOR);
                         output.accept(ModBlocks.RF_CAVITY);
+                        output.accept(ModBlocks.MAGNETIC_LENS);
                     }))
                     .build()
     );
