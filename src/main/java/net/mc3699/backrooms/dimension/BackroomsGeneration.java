@@ -2,6 +2,7 @@ package net.mc3699.backrooms.dimension;
 
 import net.mc3699.backrooms.BackroomsMod;
 import net.mc3699.backrooms.blocks.ModBlocks;
+import net.mc3699.backrooms.dimension.levels.BackroomsHallwayTest;
 import net.mc3699.backrooms.dimension.levels.BackroomsL1;
 import net.mc3699.backrooms.dimension.levels.BackroomsL2;
 import net.mc3699.backrooms.dimension.util.GenUtil;
@@ -49,14 +50,10 @@ public class BackroomsGeneration {
                     // Insert levels for generation here.
                     BackroomsL1.generateChunk(event.getChunk());
                     BackroomsL2.generateChunk(event.getChunk());
+                    BackroomsHallwayTest.generateChunk(event.getChunk());
                 }
             }
         }
     }
-
-
-
-
-
 }
 

@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "mcbr:test_barrel",
+      "weight": 1
+    }
+  ],
+  "placement":
+  {
+    "type": "minecraft:random_spread",
+    "spacing": 16,
+    "separation": 12,
+    "salt": 17237608
+  }
+}
