@@ -33,7 +33,7 @@ public class BackroomsL1 {
         }
 
         if(!isChunkInNoise(chunk.getPos().x,chunk.getPos().z, GenNoise.EmptyAreaNoise, 0.25)) {
-            GenUtil.generateBasicWalls(chunk, L1_FLOOR_LEVEL, L1_CEILING_LEVEL, ModBlocks.YELLOW_WALLPAPER.get());
+            GenUtil.generateBasicWallsWithExtension(chunk, L1_FLOOR_LEVEL, L1_CEILING_LEVEL, ModBlocks.YELLOW_WALLPAPER.get(), 2, Blocks.STONE_BRICKS);
         }
 
         GenUtil.fillLayer(chunk, L1_FLOOR_LEVEL, ModBlocks.MOIST_CARPET.get());

@@ -71,6 +71,24 @@ public class GenUtil {
 
     }
 
+    public static void generateBasicWallsWithExtension(ChunkAccess chunk, int floorLevel, int ceilingLevel, Block block, int extensionOffset, Block extensionBlock)
+    {
+        int startX = random.nextInt(0, 15);
+        int startZ = random.nextInt(0, 15);
+        int length = random.nextInt(5, 15);
+        int wallThickness = random.nextInt(0,4);
+
+        if(random.nextBoolean())
+        {
+            BlockFill.fillArea(chunk, startX, floorLevel+1, startZ, startX+length, ceilingLevel-1, startZ+wallThickness, block);
+            BlockFill.fillArea(chunk, startX, ceilingLevel+1, startZ, startX+length, ceilingLevel+extensionOffset, startZ+wallThickness, extensionBlock);
+        } else {
+            BlockFill.fillArea(chunk, startX, floorLevel+1, startZ, startX+wallThickness, ceilingLevel-1, startZ+length, block);
+            BlockFill.fillArea(chunk, startX, ceilingLevel+1, startZ, startX+wallThickness, ceilingLevel+extensionOffset, startZ+length, extensionBlock);
+        }
+
+    }
+
     public static boolean isChunkInNoise(int chunkX, int chunkZ, PerlinNoise noise, double threshold)
     {
         double scale = 0.1;

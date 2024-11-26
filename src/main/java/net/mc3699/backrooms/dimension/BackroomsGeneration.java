@@ -50,7 +50,7 @@ public class BackroomsGeneration {
                     // Insert levels for generation here.
                     BackroomsL1.generateChunk(event.getChunk());
                     BackroomsL2.generateChunk(event.getChunk());
-                    BackroomsHallwayTest.generateChunk(event.getChunk());
+                    //BackroomsHallwayTest.generateChunk(event.getChunk());
                 }
             }
         }
