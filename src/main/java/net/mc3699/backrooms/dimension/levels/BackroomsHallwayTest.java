@@ -1,7 +1,7 @@
 package net.mc3699.backrooms.dimension.levels;
 
 import net.mc3699.backrooms.dimension.util.GenUtil;
-import net.mc3699.utility.BlockFill;
+import net.mc3699.backrooms.utility.BlockFill;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.chunk.ChunkAccess;
 

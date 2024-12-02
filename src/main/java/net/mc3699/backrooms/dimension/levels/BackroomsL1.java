@@ -16,7 +16,6 @@ public class BackroomsL1 {
 
     public static void generateChunk(ChunkAccess chunk)
     {
-        // DO NOT REMOVE!
         GenUtil.generateBeams(chunk, L1_CEILING_LEVEL + 2);
         GenUtil.fillLayer(chunk, L1_CEILING_LEVEL + 3, Blocks.OAK_PLANKS);
 

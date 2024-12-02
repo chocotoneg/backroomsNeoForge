@@ -1,7 +1,7 @@
 package net.mc3699.backrooms.dimension.util;
 
 import net.mc3699.backrooms.blocks.ModBlocks;
-import net.mc3699.utility.BlockFill;
+import net.mc3699.backrooms.utility.BlockFill;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.Block;
